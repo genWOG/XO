@@ -95,3 +95,10 @@ function getWin(win) {
     }
     console.log("stopper", stopper);
 }
+
+function clear() {
+    for (i = 0; i < massiv_flagov.length; i++) {
+        massiv_flagov[i] = 0;
+        document.getElementById(i).style.backgroundColor = null;
+    }
+}
