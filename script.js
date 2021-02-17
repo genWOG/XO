@@ -1,6 +1,5 @@
 var $symbols = document.getElementById('XO'); //ячейки таблицы
-var massiv_flagov = []; //для установки флагов, заполнена ли ячейка
-var list1; //список для установление ID
+var massiv_flagov = document.getElementsByTagName('td'); //список для установление ID
 let cell = 1,
     i = 0, //индексы и переменные
     j = 0;
@@ -9,10 +8,10 @@ let stopper = 0; //остановка ходов
 
 //install the IDs to each cell in the table
 window.addEventListener('load', function(event) {
-    list1 = document.getElementsByTagName('td'); //покачто должно быть 9
-    massiv_flagov = document.getElementsByTagName('td');
-    for (i = 0; i < list1.length; i++) {
-        list1[i].id = i;
+    massiv_flagov = document.getElementsByTagName('td'); //покачто должно быть 9
+    //massiv_flagov = document.getElementsByTagName('td');
+    for (i = 0; i < massiv_flagov.length; i++) {
+        massiv_flagov[i].id = i;
         massiv_flagov[i].value = 0;
     }
 })
@@ -28,7 +27,7 @@ $symbols.addEventListener('click', function(event) {
         var tagName = event.target.tagName.toLowerCase();
         if (tagName === 'td') {
             if (stopper == 0) {
-                if (color_cell == list1.length) {
+                if (color_cell == massiv_flagov.length) {
                     alert("Tired!")
                 } else {
                     event.target.style.backgroundColor = "Blue";
@@ -41,7 +40,7 @@ $symbols.addEventListener('click', function(event) {
             //---------------------------↕ход ИИ
             if (stopper == 0) {
                 while (cell != 0) {
-                    j = getRandomInt(list1.length); //0-8 получаем случайное число, одно на многократное использование!
+                    j = getRandomInt(massiv_flagov.length); //0-8 получаем случайное число, одно на многократное использование!
                     cell = massiv_flagov[j].value;
                     if (color_cell == 9) {
                         cell = 2;
