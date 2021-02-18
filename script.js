@@ -1,4 +1,5 @@
 var $symbols = document.getElementById('XO'); //ячейки таблицы
+var $buttons = document.querySelector("#clear"); //choose how in css
 var massiv_flagov = document.getElementsByTagName('td'); //список для установление ID
 let cell = 1,
     i = 0, //индексы и переменные
@@ -93,12 +94,16 @@ function getWin(win) {
         if (win == 1) { alert("You win!"); } else { alert("I win!"); }
         stopper = 1;
     }
-    console.log("stopper", stopper);
+    //console.log("stopper", stopper);
 }
-
-function clear() {
+//play again
+$buttons.addEventListener('click', function(event) {
+    console.log("how is it?");
     for (i = 0; i < massiv_flagov.length; i++) {
-        massiv_flagov[i] = 0;
         document.getElementById(i).style.backgroundColor = null;
+        massiv_flagov[i].value = 0;
     }
-}
+    color_cell = 0;
+    stopper = 0;
+
+})
